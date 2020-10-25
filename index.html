@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>rock paper scissors</title>
+</head>
+<body>
+    <script>
+
+        function playerPlay () {
+            let play = "";
+        
+            while (play !== "rock" && play !== "paper" && play !== "scissors") {
+                play = prompt ("Please, choose between 'rock', 'paper' and 'scissors' :").toLowerCase();
+            }
+
+            return play;
+        }
+
+        function computerPlay () {
+            const randomValue = Math.ceil(Math.random() * 3);
+            
+            if (randomValue === 1) return "rock";
+
+            else if (randomValue === 2) return "paper";
+
+            else return "scissors";
+        }
+
+        function roundResult (playerSelection, computerSelection) {
+            if (playerSelection === computerSelection) return `It's an equality! ${playerSelection} and ${computerSelection}`;
+
+            else {
+                switch (playerSelection + computerSelection) {
+                    case "rockpaper" :
+                        return "You Lose! paper beats rock";
+                    case "paperrock" :
+                        return "You Win! rock beats paper";
+                    case "rockscissors" :
+                        return "You Win! rock beats scissors";
+                    case "scissorsrock" :
+                        return "You Lose! rock beats scissors";
+                    case "papersscissors" :
+                        return "You Lose! scissors beats paper";
+                    case "scissorspaper" :
+                        return "You Win! scissors beats paper";
+                }
+            }
+        }
+
+        console.log (roundResult(playerPlay(), computerPlay()));
+
+    </script>
+</body>
+</html>
